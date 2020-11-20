@@ -8,10 +8,13 @@ function ListView(props) {
     <React.Fragment>
       <ul>
         {props.Kegs.map((keg, index) => 
-        <Keg Name={keg.Name}
+        <Keg 
+          whenKegClicked = {props.onKegSelection}
+          Name={keg.Name}
           Price={keg.Price}
           AlcoholContent={keg.AlcoholContent}
           PintsLeft={keg.PintsLeft}
+          id={keg.id}
           key={index}/>
         )}
       </ul>
@@ -22,6 +25,7 @@ function ListView(props) {
 
 Keg.propTypes = {
   kegs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onKegSelection: PropTypes.func
 };
 
 export default ListView; 
