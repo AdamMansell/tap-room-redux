@@ -25,8 +25,10 @@ function KegList () {
   return (
     <React.Fragment>
       <KegController />
-      <ListView />
-        Kegs={onTap}
+      <div id="list-view">
+        <ListView
+          Kegs={onTap} />
+      </div>
     </React.Fragment>
   );
 

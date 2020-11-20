@@ -8,7 +8,7 @@ function ListView(props) {
     <React.Fragment>
       <ul>
         {props.Kegs.map((keg, index) => 
-        <Keg Name = {keg.Name}
+        <Keg Name={keg.Name}
           Price={keg.Price}
           AlcoholContent={keg.AlcoholContent}
           PintsLeft={keg.PintsLeft}
@@ -21,7 +21,7 @@ function ListView(props) {
 
 
 Keg.propTypes = {
-  kegs: PropTypes.arrayOf(object).isRequired,
+  kegs: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ListView; 

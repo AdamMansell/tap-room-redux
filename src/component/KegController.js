@@ -1,14 +1,28 @@
 import React from "react";
-import Details from "./Details";
-import Create from "./Create";
+// import Details from "./Details";
+// import Create from "./Create";
+import NewKegForm from "./NewKegForm";
 
 
-function KegController() {
-  return (
-    <React.Fragment>
+class KegController extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
 
-    </React.Fragment>
-  );
+    }
+  }
+
+  //event handlers
+
+  render() {
+    let currentlyVisibleState = null;
+    if(true) { currentlyVisibleState = <NewKegForm />}
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        {/* {button} */}
+      </React.Fragment>
+    );
+  }
 }
-
 export default KegController; 
