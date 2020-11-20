@@ -9,7 +9,7 @@ class KegController extends React.Component{
     super(props)
     this.state = {
       formVisibleOnPage: false,
-      onTap = [],
+      onTap: [],
       selectedKeg: null,
     }
   }

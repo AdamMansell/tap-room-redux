@@ -8,11 +8,11 @@ function ListView(props) {
     <React.Fragment>
       <ul>
         {props.Kegs.map((keg, index) => 
-        <a onclick={handleKegDetail}><Keg Name={keg.Name}
+        <Keg Name={keg.Name}
           Price={keg.Price}
           AlcoholContent={keg.AlcoholContent}
           PintsLeft={keg.PintsLeft}
-          key={keg.id}/></a>
+          key={index}/>
         )}
       </ul>
     </React.Fragment>
