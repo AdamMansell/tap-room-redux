@@ -1,16 +1,36 @@
-import React from 'react'
 import KegController from './KegController'
-import ListView from "./ListView";
+import ListView from "./ListView";	import ListView from "./ListView";
 
 
-function KegList () {
+const onTap = [
+  {
+    Name: 'Budlight',
+    Brand: 'Budweieser',
+    Price: '$3',
+    AlcoholContent: '5%',
+    PintsLeft: 124
+  },
+  {
+    Name: 'Wanderlust',
+    Brand: 'Breakside',
+    Price: '$5',
+    AlcoholContent: '6.2%',
+    PintsLeft: 124
+  }
+]
 
+
+function KegList () {	
+  
   return (
     <React.Fragment>
-      <ItemController />
+      <KegController />
       <ListView />
+        Kegs={onTap}
     </React.Fragment>
   );
 
+
 }
-export default KegList; 
+
+export default KegList;
