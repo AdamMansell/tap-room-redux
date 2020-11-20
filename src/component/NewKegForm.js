@@ -5,7 +5,7 @@ import {v4} from 'uuid'
 function NewKegForm(props) {
   return (
     <React.Fragment>
-      <form onSubmit={handleNewKegFormSubmission}>
+      <form onSubmit={handleNewKegForm}>
         <input
           type='text'
           name='Name'
@@ -26,6 +26,11 @@ function NewKegForm(props) {
       </form>
     </React.Fragment>
   )
+
+  function handleNewKegForm(event){
+    event.preventDefault();
+    props.onNewKegForm({Name: event.target.Name.value, Brand: event.target.Brand.value, Price: event.target.Price.value, AlcoholContent: event.target.AlcoholContent.value, id:v4()});
+  }
 };
 
 export default NewKegForm; 
