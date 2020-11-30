@@ -8,19 +8,19 @@ function NewKegForm(props) {
       <form onSubmit={handleNewKegForm}>
         <input
           type='text'
-          name='Name'
+          name='name'
           placeholder='Enter a Name' />
         <input
           type='text'
-          name='Brand'
+          name='brand'
           placeholder='Enter a Brand' />
           <input
           type='text'
-          name='Price'
+          name='price'
           placeholder='Enter a Price' />
           <input
           type='text'
-          name='AlcoholContent'
+          name='alcoholContent'
           placeholder='Enter the Alcohol Content' />
           <button type ='submit'>Submit</button>
       </form>
@@ -29,7 +29,7 @@ function NewKegForm(props) {
 
   function handleNewKegForm(event){
     event.preventDefault();
-    props.onNewKegCreation({ Name: event.target.Name.value, Brand: event.target.Brand.value, Price: event.target.Price.value, AlcoholContent: event.target.AlcoholContent.value, id: v4() });
+    props.onNewKegCreation({ name: event.target.name.value, brand: event.target.brand.value, price: event.target.price.value, alcoholContent: event.target.alcoholContent.value, id: v4() });
   }
 };
 

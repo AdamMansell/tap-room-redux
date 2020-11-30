@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 function Keg(props) {
 
-  let PintsLeft = props.PintsLeft;
-  if(parseInt(PintsLeft) === 0) {
+  let pintsLeft = props.pintsLeft;
+  if(parseInt(pintsLeft) === 0) {
     let quantity = "Keg's Empty";
   }
 
   return (
     <React.Fragment>
       <div onClick = {() => props.whenKegClicked(props.id)}>
-        <li>Name: {props.Name}</li>
-        <li>Brand: {props.Brand}</li>
-        <li>Price: ${props.Price}</li>
-        <li>Content: {props.AlcoholContent}%</li>
-        <li>PintsLeft: {PintsLeft}</li>
+        <li>Name: {props.name}</li>
+        <li>Brand: {props.brand}</li>
+        <li>Price: ${props.price}</li>
+        <li>Content: {props.alcoholContent}%</li>
+        <li>PintsLeft: {pintsLeft}</li>
         <hr></hr>
       </div>
     </React.Fragment>
@@ -23,10 +23,10 @@ function Keg(props) {
 }
 
 Keg.propTypes = {
-  Name: PropTypes.string.isRequired,
-  Price: PropTypes.string.isRequired,
-  AlcoholContent: PropTypes.string.isRequired,
-  PintsLeft: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  alcoholContent: PropTypes.string.isRequired,
+  pintsLeft: PropTypes.number.isRequired,
   id: PropTypes.string,
   whenKegClicked: PropTypes.func
 };

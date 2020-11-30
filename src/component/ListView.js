@@ -7,14 +7,14 @@ function ListView(props) {
     <React.Fragment>
       <ul>
         {
-          props.Kegs.map((keg, index) => 
+          props.kegs.map((keg, index) => 
           <Keg 
             whenKegClicked = {props.onKegSelection}
-            Name={keg.Name}
-            Brand={keg.Brand}
-            Price={keg.Price}
-            AlcoholContent={keg.AlcoholContent}
-            PintsLeft={keg.PintsLeft}
+            name={keg.name}
+            brand={keg.brand}
+            price={keg.price}
+            alcoholContent={keg.alcoholContent}
+            pintsLeft={keg.pintsLeft}
             id={keg.id}
             key={index}/>            
           )

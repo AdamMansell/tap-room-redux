@@ -39,7 +39,7 @@ class KegController extends React.Component {
   }
 
   handleAddingNewKegToList = (newKeg) => { // adds new Keg to Array
-    console.log(`newKeg: ${JSON.stringify(newKeg)}`);
+    // console.log(`newKeg: ${JSON.stringify(newKeg)}`);
 
     const newOnTap = this.state.onTap
       .concat(newKeg);
@@ -73,7 +73,7 @@ class KegController extends React.Component {
       buttonText = "Return to List of Kegs";
     } else {                                // default
       currentlyVisibleComponent = <ListView 
-        Kegs={this.state.onTap} 
+        kegs={this.state.onTap} 
         onKegSelection={this.handleChangingSelectedKeg} />;
       buttonText = "Add Keg";
     }
