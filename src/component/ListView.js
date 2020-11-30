@@ -2,7 +2,6 @@ import React from "react";
 import Keg from './Keg'
 import PropTypes from 'prop-types';
 
-
 function ListView(props) {
   return (
     <React.Fragment>
@@ -21,7 +20,6 @@ function ListView(props) {
     </React.Fragment>
   );
 }
-
 
 Keg.propTypes = {
   kegs: PropTypes.arrayOf(PropTypes.object).isRequired,

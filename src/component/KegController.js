@@ -3,9 +3,8 @@ import KegDetails from "./KegDetails";
 import NewKegForm from "./NewKegForm";
 import ListView from "./ListView";
 
-
-class KegController extends React.Component{
-  constructor(props){
+class KegController extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
       formVisibleOnPage: false,
@@ -20,7 +19,7 @@ class KegController extends React.Component{
     if (this.state.selectedKeg != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedKeg: null,
+        // selectedKeg: null    
       });
     } else {
       this.setState(prevState => ({
@@ -30,12 +29,18 @@ class KegController extends React.Component{
   }
 
   handleChangingSelectedKeg = (id) => { // view Keg in Detail
-    const selectedKef = this.state.keg
-      .filter(keg => keg.id === id)[0];
-    this.setState({selectedKeg});
+    console.log(`id: ${id}`);
+    const selectedKeg = this.state.onTap.filter((keg) => {
+      console.log(`keg: ${JSON.stringify(keg)}`);
+      return keg.id === id;
+    })[0];
+    console.log(`selectedKeg: ${JSON.stringify(selectedKeg)}`);
+    this.setState({ selectedKeg: selectedKeg });
   }
 
   handleAddingNewKegToList = (newKeg) => { // adds new Keg to Array
+    console.log(`newKeg: ${JSON.stringify(newKeg)}`);
+
     const newOnTap = this.state.onTap
       .concat(newKeg);
     this.setState({
@@ -44,11 +49,26 @@ class KegController extends React.Component{
     });
   }
 
+  handleBuyingPintsClick = (kegToEdit) => {
+    const editedOnTap = this.state.onTap
+      .filter(keg => keg.id !== this.state.selectedKeg.id)
+      .concat(kegToEdit);
+    this.setState({
+      onTap: editedOnTap,
+    });
+  }
+
 
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
+
+    // if (this.state.editing) { // edit
+    //   currentlyVisibleState = <EditItemForm
+    //   item = {this.state.selectedItem}
+    // onEditItem =  {this.handleEditingItemInList}/>
+
     if (this.state.formVisibleOnPage) { // catch is set
       currentlyVisibleState = <NewKegForm 
         onNewKegCreation={this.handleAddingNewKegToList} />

@@ -2,13 +2,19 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 function Keg(props) {
+
+  let PintsLeft = props.PintsLeft;
+  if(parseInt(PintsLeft) === 0) {
+    let quantity = "Keg's Empty";
+  }
+
   return (
     <React.Fragment>
       <div onClick = {() => props.whenKegClicked(props.id)}>
         <li>{props.Name}</li>
         <li>{props.Price}</li>
         <li>{props.AlcoholContent}</li>
-        <li>{props.PintsLeft}</li>
+        <li>{PintsLeft}</li>
       </div>
     </React.Fragment>
   );
