@@ -10,6 +10,7 @@ class KegController extends React.Component {
       formVisibleOnPage: false,
       onTap: [],
       selectedKeg: null,
+      pintsLeft: 124
     }
   }
 
@@ -49,12 +50,12 @@ class KegController extends React.Component {
     });
   }
 
-  handleBuyingPintsClick = (kegToEdit) => {
-    const editedOnTap = this.state.onTap
-      .filter(keg => keg.id !== this.state.selectedKeg.id)
-      .concat(kegToEdit);
+  handleBuyingPintsClick = () => {
+    // const editedOnTap = this.state.onTap
+    //   .filter(keg => keg.id !== this.state.selectedKeg.id)
+    //   .concat(kegToEdit);
     this.setState({
-      onTap: editedOnTap,
+      pintsLeft: this.state.pintsLeft - 1
     });
   }
 
@@ -73,7 +74,9 @@ class KegController extends React.Component {
       buttonText = "Return to List of Kegs";
     } else {                                // default
       currentlyVisibleComponent = <ListView 
-        kegs={this.state.onTap} 
+        kegs={this.state.onTap}
+        pintsLeft={this.state.pintsLeft}
+        handleBuyingPintsClick={this.handleBuyingPintsClick}
         onKegSelection={this.handleChangingSelectedKeg} />;
       buttonText = "Add Keg";
     }

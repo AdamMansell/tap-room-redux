@@ -10,13 +10,14 @@ function ListView(props) {
           props.kegs.map((keg, index) => 
           <Keg 
             whenKegClicked = {props.onKegSelection}
+            whenBuyButtonIsClicked={props.handleBuyingPintsClick}
             name={keg.name}
             brand={keg.brand}
             price={keg.price}
             alcoholContent={keg.alcoholContent}
-            pintsLeft={keg.pintsLeft || 124}
+            pintsLeft={props.pintsLeft}
             id={keg.id}
-            key={index}/>            
+            key={index}/>       
           )
         }        
       </ul>
@@ -26,7 +27,8 @@ function ListView(props) {
 
 Keg.propTypes = {
   kegs: PropTypes.arrayOf(PropTypes.object),
-  onKegSelection: PropTypes.func
+  onKegSelection: PropTypes.func,
+  pintsLeft: PropTypes.number.isRequired
 };
 
 export default ListView; 
