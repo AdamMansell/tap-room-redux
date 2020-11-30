@@ -15,7 +15,7 @@ class KegController extends React.Component {
 
   //event handlers
 
-  handleClick = () => {  // sets state to normal
+  handleMainPageButtonClick = () => {  // sets state to normal
     if (this.state.selectedKeg != null) {
       this.setState({
         formVisibleOnPage: false,
@@ -29,12 +29,12 @@ class KegController extends React.Component {
   }
 
   handleChangingSelectedKeg = (id) => { // view Keg in Detail
-    console.log(`id: ${id}`);
+    // console.log(`id: ${id}`);
     const selectedKeg = this.state.onTap.filter((keg) => {
-      console.log(`keg: ${JSON.stringify(keg)}`);
+      // console.log(`keg: ${JSON.stringify(keg)}`);
       return keg.id === id;
     })[0];
-    console.log(`selectedKeg: ${JSON.stringify(selectedKeg)}`);
+    // console.log(`selectedKeg: ${JSON.stringify(selectedKeg)}`);
     this.setState({ selectedKeg: selectedKeg });
   }
 
@@ -58,10 +58,8 @@ class KegController extends React.Component {
     });
   }
 
-
-
   render() {
-    let currentlyVisibleState = null;
+    let currentlyVisibleComponent = null;
     let buttonText = null;
 
     // if (this.state.editing) { // edit
@@ -70,23 +68,20 @@ class KegController extends React.Component {
     // onEditItem =  {this.handleEditingItemInList}/>
 
     if (this.state.formVisibleOnPage) { // catch is set
-      currentlyVisibleState = <NewKegForm 
+      currentlyVisibleComponent = <NewKegForm 
         onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to List of Kegs";
     } else {                                // default
-      currentlyVisibleState = <ListView 
+      currentlyVisibleComponent = <ListView 
         Kegs={this.state.onTap} 
         onKegSelection={this.handleChangingSelectedKeg} />;
       buttonText = "Add Keg";
     }
 
-
-
-
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        {currentlyVisibleComponent}
+        <button onClick={this.handleMainPageButtonClick}>{buttonText}</button>
       </React.Fragment>
     );
   }

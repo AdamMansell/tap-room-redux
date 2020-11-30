@@ -11,10 +11,12 @@ function Keg(props) {
   return (
     <React.Fragment>
       <div onClick = {() => props.whenKegClicked(props.id)}>
-        <li>{props.Name}</li>
-        <li>{props.Price}</li>
-        <li>{props.AlcoholContent}</li>
-        <li>{PintsLeft}</li>
+        <li>Name: {props.Name}</li>
+        <li>Brand: {props.Brand}</li>
+        <li>Price: ${props.Price}</li>
+        <li>Content: {props.AlcoholContent}%</li>
+        <li>PintsLeft: {PintsLeft}</li>
+        <hr></hr>
       </div>
     </React.Fragment>
   );
