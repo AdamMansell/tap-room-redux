@@ -14,7 +14,7 @@ function ListView(props) {
             brand={keg.brand}
             price={keg.price}
             alcoholContent={keg.alcoholContent}
-            pintsLeft={keg.pintsLeft}
+            pintsLeft={keg.pintsLeft || 124}
             id={keg.id}
             key={index}/>            
           )
@@ -25,7 +25,7 @@ function ListView(props) {
 }
 
 Keg.propTypes = {
-  kegs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  kegs: PropTypes.arrayOf(PropTypes.object),
   onKegSelection: PropTypes.func
 };
 

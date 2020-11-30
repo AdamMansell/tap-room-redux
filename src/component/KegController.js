@@ -1,5 +1,5 @@
 import React from "react";
-import KegDetails from "./KegDetails";
+// import KegDetails from "./KegDetails";
 import NewKegForm from "./NewKegForm";
 import ListView from "./ListView";
 

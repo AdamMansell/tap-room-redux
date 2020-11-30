@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 function Keg(props) {
 
   let pintsLeft = props.pintsLeft;
+  // console.log(`pintsLeft: ${pintsLeft}`);
   if(parseInt(pintsLeft) === 0) {
-    let quantity = "Keg's Empty";
+    pintsLeft = "Keg's Empty";
   }
 
   return (
