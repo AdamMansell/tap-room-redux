@@ -59,12 +59,14 @@ class KegController extends React.Component {
     
     console.log(`BEFORE: selectedKeg: ${JSON.stringify(selectedKeg)}`);
 
-    selectedKeg.pintsLeft = selectedKeg.pintsLeft - 1;
+    selectedKeg.pintsLeft = selectedKeg.pintsLeft > 0 ?  selectedKeg.pintsLeft - 1 : 0;
 
     console.log(`AFTER: selectedKeg: ${JSON.stringify(selectedKeg)}`);
     
+    let newPintsLeft = this.state.totalPintsLeft > 0 ? this.state.totalPintsLeft - 1 : 0;
+
     this.setState({
-      totalPintsLeft: this.state.totalPintsLeft - 1
+      totalPintsLeft: newPintsLeft
     });
   }
 
