@@ -15,7 +15,7 @@ function ListView(props) {
             brand={keg.brand}
             price={keg.price}
             alcoholContent={keg.alcoholContent}
-            pintsLeft={props.pintsLeft}
+            pintsLeft={keg.pintsLeft}
             id={keg.id}
             key={index}/>       
           )

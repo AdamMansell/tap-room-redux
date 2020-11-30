@@ -10,7 +10,7 @@ class KegController extends React.Component {
       formVisibleOnPage: false,
       onTap: [],
       selectedKeg: null,
-      pintsLeft: 124
+      totalPintsLeft: 0
     }
   }
 
@@ -46,16 +46,25 @@ class KegController extends React.Component {
       .concat(newKeg);
     this.setState({
       onTap: newOnTap,
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      totalPintsLeft: this.state.totalPintsLeft + 124
     });
   }
 
-  handleBuyingPintsClick = () => {
-    // const editedOnTap = this.state.onTap
-    //   .filter(keg => keg.id !== this.state.selectedKeg.id)
-    //   .concat(kegToEdit);
+  handleBuyingPintsClick = (id) => {
+    const selectedKeg = this.state.onTap.filter((keg) => {
+      // console.log(`keg: ${JSON.stringify(keg)}`);
+      return keg.id === id;
+    })[0];
+    
+    console.log(`BEFORE: selectedKeg: ${JSON.stringify(selectedKeg)}`);
+
+    selectedKeg.pintsLeft = selectedKeg.pintsLeft - 1;
+
+    console.log(`AFTER: selectedKeg: ${JSON.stringify(selectedKeg)}`);
+    
     this.setState({
-      pintsLeft: this.state.pintsLeft - 1
+      totalPintsLeft: this.state.totalPintsLeft - 1
     });
   }
 

@@ -19,7 +19,7 @@ function Keg(props) {
         <li>PintsLeft: {pintsLeft}</li>
         <hr></hr>
       </div>
-      <button onClick = { () => props.whenBuyButtonIsClicked() }> Buy!</button>
+      <button onClick = { () => props.whenBuyButtonIsClicked(props.id) }> Buy!</button>
     </React.Fragment>
   );
 }
