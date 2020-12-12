@@ -3,12 +3,12 @@ import KegDetails from "./KegDetails";
 import NewKegForm from "./NewKegForm";
 import ListView from "./ListView";
 import { connect } from 'react-redux';
+import changeFormVisibleOnPage from "../actionCreator/changeFormVisibleOnPage";
 
 class KegController extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      formVisibleOnPage: false,
+    this.state = {      
       onTap: [],
       selectedKeg: null,
       kegDetailsVisible: false,
@@ -20,15 +20,13 @@ class KegController extends React.Component {
 
   handleMainPageButtonClick = () => {  // sets state to normal
     if (this.state.selectedKeg != null) {
-      this.setState({
-        formVisibleOnPage: false,
+      this.setState({        
         kegDetailsVisible: false,
         selectedKeg: null    
       });
+      this.props.setFormVisibleOnPage(false);
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
+      this.props.setFormVisibleOnPage(!this.props.formVisibleOnPage);
     }
   }
 
@@ -48,10 +46,10 @@ class KegController extends React.Component {
     const newOnTap = this.state.onTap
       .concat(newKeg);
     this.setState({
-      onTap: newOnTap,
-      formVisibleOnPage: false,      
+      onTap: newOnTap,      
       totalPintsLeft: this.state.totalPintsLeft + 124
     });
+    this.props.setFormVisibleOnPage(false);
   }
 
   handleBuyingPintsClick = (id) => {
@@ -77,7 +75,7 @@ class KegController extends React.Component {
     //   item = {this.state.selectedItem}
     // onEditItem =  {this.handleEditingItemInList}/>
 
-    if (this.state.formVisibleOnPage) { // catch is set
+    if (this.props.formVisibleOnPage) { // catch is set
       currentlyVisibleComponent = <NewKegForm 
         onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to List of Kegs";
@@ -104,6 +102,11 @@ class KegController extends React.Component {
     );
   }
 }
-export default KegController;
 
-// KegController = connect()(KegController);
+const mapStateToProps = ({ formVisibleOnPage }) => ({ formVisibleOnPage });
+
+const mapDispatchToProps = dispatch => ({
+  setFormVisibleOnPage: formVisibleOnPage => dispatch(changeFormVisibleOnPage(formVisibleOnPage))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(KegController);

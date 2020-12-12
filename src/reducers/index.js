@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-// import location from "./location";
+import formVisibleOnPage from "./formVisibleOnPage";
 
 export default combineReducers({
-  // location: location
+  formVisibleOnPage: formVisibleOnPage
 });
